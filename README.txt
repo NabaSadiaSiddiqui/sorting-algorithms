@@ -1,12 +1,10 @@
-Program sorts an integer array using the following sorting algorithms:
+The prrogram sorts an integer array using the following sorting algorithms:
 1. Bubble sort
 2. Insertion sort
 3. Selection sort
 
-Future work items:
-1. Heap sort
-2. Quick sort
-3. Radix sort
-4. Counting sort
-5. Bucket sort
-6. Merge sort
+Directory structure of this project is as follows:
+- /include has all the user-defined header files
+- /lib has source for the application's library functions
+- /src has the source code for the application's main entry point
+- /test has unit tests to verify functionality
