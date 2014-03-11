@@ -17,9 +17,6 @@ void InsertionSortHelper(int *arr, int i, int j);
 int* SelectionSort(int *arr);
 void SelectionSortHelper(int *arr, int i, int j);
 
-int* MergeSort(int *arr);
-bool MergeSortHelper(int *arr, int a, int b, int c, int d);
-
 int main()
 {
 	int userOption;
@@ -186,71 +183,6 @@ void SelectionSortHelper(int *arr, int i, int j)
 	}
 	
 	return;
-}
-
-//Input: Integer array arr
-//Output: Array sorted using merge sort algorithm
-int* MergeSort(int *arr)
-{
-	int arrLen=getArrSize(arr);
-	int n=arrLen;	//number of sublists
-	int el_max=1;	//maximum number of elements per sublist
-	bool evaluate=false;
-	while(n>0)
-	{
-		for(int i=0; i<arrLen; i++)
-		{
-			if(MergeSortHelper(arr, i, i+el_max-1, i+el_max, i+(el_max*2)-1))
-			{
-				evaluate=true;
-				break;
-			}
-			i=i+(el_max*2);
-		}
-		
-		if(!evaluate)
-		{
-			n=(n/(el_max*2))+1;
-			el_max *= 2;
-		}
-		else
-		{
-			n=0;
-		}
-	}
-
-	return arr;
-}
-
-//Helper function to merge sublistA=arr[a:b] and sublistB=arr[c:d], and return the merged list
-bool MergeSortHelper(int *arr, int a, int b, int c, int d)
-{
-	int *sublistA=spliceArr(arr, a, b);
-	int *sublistB=spliceArr(arr, c, d);
-
-	if(sublistB==NULL) {
-		arr=sublistA;
-		return true;
-	}
-
-	else
-	{
-		int lenA=getArrSize(sublistA);
-		int lenB=getArrSize(sublistB);
-		int countMax=lenA+lenB;
-
-		for(int i=0; i<countMax; i++)
-		{
-			int *tmpArr=new int[countMax];
-			if(sublistA[i]<sublistB[i])
-				tmpArr[i]=sublistA[i];
-			else
-				tmpArr[i]=sublistB[i];
-		}
-			
-	
-		return false;
-	}
 }
 
 int getArrSize(int *arr)
